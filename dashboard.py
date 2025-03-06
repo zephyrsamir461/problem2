@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 # Set page configuration
 st.set_page_config(page_title="University Dashboard", layout="wide")
 
-st.title("University Dashboard: Admissions, Retention & Satisfaction")
+st.title("University Dashboard")
 
 # --- Data Loading & Preparation ---
 @st.cache_data
@@ -160,3 +160,32 @@ fig_dept_trends = px.bar(
 fig_dept_trends.update_layout(xaxis_tickangle=-45)
 
 st.plotly_chart(fig_dept_trends, use_container_width=True)
+# --- Key Findings & Actionable Insights ---
+st.subheader("Key Findings & Actionable Insights")
+
+st.markdown("""
+**1. Admissions Funnel Efficiency:**
+- **Finding:** Out of 59,400 total applications, 35,100 were admitted (roughly a 59% admission rate), and only 13,980 students enrolled. This suggests that while initial interest is strong, the conversion from admission to enrollment is around 40%.
+- **Actionable Insight:** Focus on enrollment yield strategies such as targeted follow-ups, improved scholarship offers, and enhanced campus visit programs to boost conversion rates.
+
+**2. Retention Rate Trends:**
+- **Finding:** The average retention rate is 87.10%, which is healthy compared to industry standards. However, the retention trend shows some fluctuations across terms.
+- **Actionable Insight:** Analyze terms with lower retention rates to identify potential issues (e.g., curriculum challenges or student support gaps) and consider interventions like academic advising, mentoring programs, or early alert systems.
+
+**3. Student Satisfaction Trends:**
+- **Finding:** Student satisfaction averages 82.60%. Although this indicates a generally positive experience, there are variations over time that warrant attention.
+- **Actionable Insight:** Conduct deeper surveys or focus groups in terms or years with lower satisfaction scores to pinpoint concerns. Use this feedback to improve aspects such as course delivery, support services, and campus amenities.
+
+**4. Enrollment Breakdown by Department:**
+- **Finding:** The enrollment distribution shows that Arts leads with 35.5%, followed by Science (26.4%), Engineering (21%), and Business (17.2%). This significant disparity may reflect differences in program appeal or recruitment effectiveness.
+- **Actionable Insight:** Consider targeted marketing and program enhancements for departments with lower enrollment (e.g., Business) while leveraging the strong performance of the Arts department to develop interdisciplinary programs.
+
+**5. Seasonal Variations – Spring vs. Fall:**
+- **Finding:** The comparison between Spring and Fall terms clearly indicates that Fall enrollment is substantially higher than Spring. This seasonal pattern may be due to traditional application cycles or student preferences.
+- **Actionable Insight:** Adjust resource allocation and scheduling to manage higher demand in Fall. Additionally, develop strategies (such as early admission incentives or targeted outreach) to improve Spring term enrollment.
+
+**6. Departmental Trends Over Time:**
+- **Finding:** The grouped bar chart comparing departmental enrollment trends over time shows variations that may indicate shifting student interests or market demands.
+- **Actionable Insight:** Monitor these trends longitudinally to inform decisions on resource planning, curriculum development, and program investments. For departments experiencing a downward trend, consider revising program offerings or increasing promotional efforts.
+""")
+
