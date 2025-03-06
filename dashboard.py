@@ -1,149 +1,131 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 
-# Set the page config
+# Set page configuration
 st.set_page_config(page_title="University Dashboard", layout="wide")
 
-# Title and description
-st.title("University Admissions, Retention, and Satisfaction Dashboard")
-st.markdown("""
-This dashboard monitors key performance indicators across the university’s admissions process, retention rates, and student satisfaction.
-Use the filters and interactive charts to explore trends by term, department, and season (Spring vs. Fall).
-""")
+st.title("University Dashboard: Admissions, Retention & Satisfaction")
 
-# Load the data from CSV file
-@st.cache_data
+# --- Data Loading & Preparation ---
+@st.cache(allow_output_mutation=True)
 def load_data():
     df = pd.read_csv("university_student_dashboard_data.csv")
-    # Expected columns: Year, Term, Applications, Admitted, Enrolled, Retention Rate (%), Student Satisfaction (%), Engineering Enrolled, Business Enrolled, Arts Enrolled, Science Enrolled
-    # Create a 'season' column based on term name assumptions (e.g., "Spring 2023", "Fall 2023")
-    def extract_season(Term):
-        if "Spring" in Term:
-            return "Spring"
-        elif "Fall" in Term:
-            return "Fall"
-        else:
-            return "Other"
-    df['season'] = df['Term'].apply(extract_season)
+    # Expected columns include: "Term", "Applications", "Admitted", "Enrolled",
+    # "Retention Rate (%)", "Student Satisfaction (%)", "Arts Enrolled", "Science Enrolled",
+    # "Engineering Enrolled", "Business Enrolled"
+    df['Season'] = df['Term'].apply(lambda x: 'Spring' if 'Spring' in x else ('Fall' if 'Fall' in x else 'Other'))
+    df['Year'] = df['Term'].str.extract(r'(\d{4})')
     return df
 
-data = load_data()
+df = load_data()
+
+# --- Sidebar Filters ---
 st.sidebar.header("Filters")
-all_terms = sorted(data['Term'].unique())
-selected_term = st.sidebar.selectbox("Select Term", options=["All"] + all_terms)
 
-# Apply filter based on sidebar selection
-filtered_data = data.copy()
+# Only Term filter is needed since department info comes from individual columns
+term_options = ['All'] + sorted(df['Term'].unique().tolist())
+selected_term = st.sidebar.selectbox("Select Term", term_options)
+
+# Apply term filter
+filtered_df = df.copy()
 if selected_term != "All":
-    filtered_data = filtered_data[filtered_data['Term'] == selected_term]
+    filtered_df = filtered_df[filtered_df["Term"] == selected_term]
 
-# Option to preview raw data
-if st.sidebar.checkbox("Show Raw Data"):
-    st.subheader("Raw Data")
-    st.write(filtered_data.head())
-# ------------------------------------------------
-# Section 1: KPI Summary for the Latest Term
-# ------------------------------------------------
-st.subheader("Key Performance Indicators (Latest Term)")
+# --- Summary KPIs ---
+total_applications = filtered_df["Applications"].sum()
+total_admissions = filtered_df["Admitted"].sum()
+# Use the "Enrollments" column if available; otherwise compute from departmental columns
+total_enrollments = filtered_df["Enrolled"].sum() if "Enrolled" in filtered_df.columns else (
+    filtered_df["Arts Enrolled"].sum() +
+    filtered_df["Science Enrolled"].sum() +
+    filtered_df["Engineering Enrolled"].sum() +
+    filtered_df["Business Enrolled"].sum()
+)
+avg_retention = filtered_df["Retention Rate (%)"].mean()
+avg_satisfaction = filtered_df["Student Satisfaction (%)"].mean()
 
-# Aggregate metrics per term (summing counts and averaging rates/scores)
-term_metrics = data.groupby('Term').agg({
-    'Applications': 'sum',
-    'Admitted': 'sum',
-    'Enrolled': 'sum',
-    'Retention Rate (%)': 'mean',
-    'Student Satisfaction (%)': 'mean'
+st.subheader("Summary Metrics")
+st.markdown(f"**Total Applications:** {total_applications:,}")
+st.markdown(f"**Total Admitted:** {total_admissions:,}")
+st.markdown(f"**Total Enrolled:** {total_enrollments:,}")
+st.markdown(f"**Average Retention Rate (%):** {avg_retention:.2f}%")
+st.markdown(f"**Average Student Satisfaction (%):** {avg_satisfaction:.2f}")
+
+# --- Admissions Overview Panel ---
+st.subheader("Admissions Overview")
+admissions_data = filtered_df.groupby("Term").agg({
+    "Applications": "sum",
+    "Admitted": "sum",
+    "Enrolled": "sum"
 }).reset_index()
 
-# Identify the latest term (assuming the sorted order gives the latest term)
-latest_term = sorted(term_metrics['Term'])[-1]
-latest_data = term_metrics[term_metrics['Term'] == latest_term].iloc[0]
-
-col1, col2, col3, col4, col5 = st.columns(5)
-col1.metric("Applications", int(latest_data['Applications']))
-col2.metric("Admitted", int(latest_data['Admitted']))
-col3.metric("Enrolled", int(latest_data['Enrolled']))
-col4.metric("Avg. Retention Rate", f"{latest_data['Retention Rate (%)']:.2f}")
-col5.metric("Avg. Satisfaction", f"{latest_data['Student Satisfaction (%)']:.2f}")
-
-# Section 2: Trend Analysis Over Terms
-# ------------------------------------------------
-st.subheader("Trend Analysis Over Terms")
-
-# Plot line chart for Applications, Admissions, and Enrollments
-fig_admissions = px.line(term_metrics,
-                         x='Term', 
-                         y=['Applications', 'Admitted', 'Enrolled'],
-                         markers=True,
-                         title="Applications, Admissions, and Enrollments Over Terms")
+fig_admissions = px.bar(admissions_data, x="Term", y=["Applications", "Admitted", "Enrolled"],
+                        barmode="group", title="Applications, Admissions, and Enrollments per Term")
+fig_admissions.update_layout(xaxis_tickangle=-45)
 st.plotly_chart(fig_admissions, use_container_width=True)
 
-# Plot line chart for Retention Rate over time
-fig_retention = px.line(term_metrics,
-                        x='Term', 
-                        y='Retention Rate (%)',
-                        markers=True,
-                        title="Average Retention Rate Over Terms")
+# --- Retention Rate Trends ---
+st.subheader("Retention Rate Trends")
+retention_data = filtered_df.groupby("Term")["Retention Rate (%)"].mean().reset_index()
+fig_retention = px.line(retention_data, x="Term", y="Retention Rate (%)", markers=True,
+                        title="Average Retention Rate per Term")
+fig_retention.update_layout(xaxis_tickangle=-45, yaxis_title="Retention Rate (%)")
 st.plotly_chart(fig_retention, use_container_width=True)
 
-# Plot line chart for Satisfaction Score over time
-fig_satisfaction = px.line(term_metrics,
-                           x='Term', 
-                           y='Student Satisfaction (%)',
-                           markers=True,
-                           title="Average Student Satisfaction Over Terms")
+# --- Student Satisfaction Trends ---
+st.subheader("Student Satisfaction Trends")
+satisfaction_data = filtered_df.groupby("Term")["Student Satisfaction (%)"].mean().reset_index()
+fig_satisfaction = px.line(satisfaction_data, x="Term", y="Student Satisfaction (%)", markers=True,
+                           title="Average Student Satisfaction Score per Term")
+fig_satisfaction.update_layout(xaxis_tickangle=-45)
 st.plotly_chart(fig_satisfaction, use_container_width=True)
 
-# ------------------------------------------------
-# Section 3: Seasonal (Spring vs. Fall) Analysis
-# ------------------------------------------------
-st.subheader("Seasonal Analysis: Spring vs. Fall")
+# --- Enrollment Breakdown by Department ---
+st.subheader("Enrollment Breakdown by Department")
+# Create a DataFrame for the four departments using their respective enrollment columns
+dept_data = pd.DataFrame({
+    "Department": ["Arts", "Science", "Engineering", "Business"],
+    "Enrollments": [
+        filtered_df["Arts Enrolled"].sum(),
+        filtered_df["Science Enrolled"].sum(),
+        filtered_df["Engineering Enrolled"].sum(),
+        filtered_df["Business Enrolled"].sum()
+    ]
+})
+fig_enrollment_dept = px.pie(dept_data, names="Department", values="Enrollments",
+                             title="Enrollment Breakdown by Department")
+st.plotly_chart(fig_enrollment_dept, use_container_width=True)
 
-# Group data by season and aggregate metrics
-season_metrics = data.groupby('season').agg({
-    'Applications': 'sum',
-    'Admitted': 'sum',
-    'Enrolled': 'sum',
-    'Retention Rate (%)': 'mean',
-    'Student Satisfaction (%)': 'mean'
+# --- Spring vs Fall Term Comparison ---
+st.subheader("Spring vs Fall Term Comparison")
+spring_data = filtered_df[filtered_df["Season"] == "Spring"].groupby("Term").agg({
+    "Applications": "sum",
+    "Admitted": "sum",
+    "Enrolled": "sum",
+    "Retention Rate (%)": "mean",
+    "Student Satisfaction (%)": "mean"
 }).reset_index()
 
-fig_season = px.bar(season_metrics,
-                    x='season',
-                    y=['Applications', 'Admitted', 'Enrolled'],
-                    barmode='group',
-                    title="Seasonal Comparison: Applications, Admissions, and Enrollments")
-st.plotly_chart(fig_season, use_container_width=True)
+fall_data = filtered_df[filtered_df["Season"] == "Fall"].groupby("Term").agg({
+    "Applications": "sum",
+    "Admitted": "sum",
+    "Enrolled": "sum",
+    "Retention Rate (%)": "mean",
+    "Student Satisfaction (%)": "mean"
+}).reset_index()
 
-# ------------------------------------------------
-# Section 4: Interpretations and Insights
-# ------------------------------------------------
-st.subheader("Interpretations and Insights")
-st.markdown("""
-- **Admissions Trends:**  
-  The trend charts show how applications, admissions, and enrollments have changed over different terms. Sudden peaks or declines may reflect the impact of recruitment initiatives, modifications to admission criteria, or broader economic and social factors.
-  
-- **Retention Rates:**  
-  Stable or improving retention rates generally indicate effective academic support and student services. A decline in retention, particularly during specific terms, may signal challenges such as curriculum difficulties or insufficient student engagement.
-  
-- **Satisfaction Scores:**  
-  Trends in student satisfaction provide key insights into the overall student experience. If lower satisfaction scores coincide with drops in retention, it underscores the need to invest in quality teaching, enhanced support services, and improved campus facilities.
-  
-- **Seasonal Differences:**  
-  Analyzing metrics by season (Spring vs. Fall) can reveal distinct patterns. For example, higher application and enrollment numbers in the Fall term might align with the high school graduation cycle, whereas the Spring term could attract a different student profile.
-  
-- **Correlation Insights:**  
-  The dashboard also allows for exploring potential correlations between satisfaction and retention. A strong positive correlation would suggest that efforts to improve the student experience could directly enhance retention rates.
-  
-- **Actionable Strategies:**  
-  - **Resource Allocation:** Focus on terms with lower retention and satisfaction for targeted interventions such as improved academic advising or mentorship programs.  
-  - **Recruitment Tactics:** Adapt recruitment strategies based on seasonal trends to ensure a balanced and diverse student body.  
-  - **Continuous Monitoring:** Regular reviews of these key performance indicators can help identify early warning signs and enable timely adjustments in policies and practices.
-  
-- **Long-Term Planning:**  
-  The insights from this dashboard support proactive decision-making, allowing the institution to address current challenges and forecast future trends in student engagement and success.
-""")
-st.markdown("""
-This comprehensive dashboard is designed to empower administrators with actionable insights to continually improve admissions processes, student retention, and overall satisfaction.
-""")
+if not spring_data.empty:
+    spring_data["Season"] = "Spring"
+if not fall_data.empty:
+    fall_data["Season"] = "Fall"
+
+if not spring_data.empty or not fall_data.empty:
+    combined = pd.concat([spring_data, fall_data])
+    fig_spring_fall = px.bar(combined, x="Term", y="Enrolled", color="Season",
+                             barmode="group", title="Enrollments Comparison: Spring vs Fall")
+    fig_spring_fall.update_layout(xaxis_tickangle=-45)
+    st.plotly_chart(fig_spring_fall, use_container_width=True)
+else:
+    st.write("Insufficient data for Spring vs Fall comparison.")
