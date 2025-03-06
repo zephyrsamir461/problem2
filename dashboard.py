@@ -9,7 +9,7 @@ st.set_page_config(page_title="University Dashboard", layout="wide")
 st.title("University Dashboard: Admissions, Retention & Satisfaction")
 
 # --- Data Loading & Preparation ---
-@st.cache(allow_output_mutation=True)
+@st.cache_data
 def load_data():
     df = pd.read_csv("university_student_dashboard_data.csv")
     # Expected columns include: "Term", "Applications", "Admitted", "Enrolled",
