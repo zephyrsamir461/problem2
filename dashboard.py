@@ -149,15 +149,14 @@ df_dept_long = filtered_df.melt(
 )
 
 # Create a line chart comparing trends between departments
-fig_dept_trends = px.line(
+fig_dept_trends = px.bar(
     df_dept_long,
     x="Term",
     y="Enrollments",
     color="Department",
-    markers=True,
+    barmode="group",
     title="Departmental Enrollment Trends Over Time"
 )
 fig_dept_trends.update_layout(xaxis_tickangle=-45)
 
 st.plotly_chart(fig_dept_trends, use_container_width=True)
-
