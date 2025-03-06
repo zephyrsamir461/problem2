@@ -160,32 +160,68 @@ fig_dept_trends = px.bar(
 fig_dept_trends.update_layout(xaxis_tickangle=-45)
 
 st.plotly_chart(fig_dept_trends, use_container_width=True)
+
 # --- Key Findings & Actionable Insights ---
 st.subheader("Key Findings & Actionable Insights")
 
 st.markdown("""
 **1. Admissions Funnel Efficiency:**
-- **Finding:** Out of 59,400 total applications, 35,100 were admitted (roughly a 59% admission rate), and only 13,980 students enrolled. This suggests that while initial interest is strong, the conversion from admission to enrollment is around 40%.
-- **Actionable Insight:** Focus on enrollment yield strategies such as targeted follow-ups, improved scholarship offers, and enhanced campus visit programs to boost conversion rates.
+- **Finding:**
+  - The dashboard shows a total of 59,400 applications, with 35,100 students admitted and 13,980 ultimately enrolled.
+  - This indicates a conversion rate from application to admission of about 59%, but the yield from admitted to enrolled is only around 40%.
+- **Actionable Insights:**
+  - **Targeted Follow-Ups:** Enhance personalized communication with admitted students through phone calls, emails, or campus visits.
+  - **Financial Incentives:** Reassess scholarship and financial aid offerings to boost enrollment among admitted students.
+  - **Data Analysis:** Investigate demographic and geographic trends to identify segments with lower conversion rates and tailor recruitment strategies accordingly.
 
 **2. Retention Rate Trends:**
-- **Finding:** The average retention rate is 87.10%, which is healthy compared to industry standards. However, the retention trend shows some fluctuations across terms.
-- **Actionable Insight:** Analyze terms with lower retention rates to identify potential issues (e.g., curriculum challenges or student support gaps) and consider interventions like academic advising, mentoring programs, or early alert systems.
+- **Finding:**
+  - The average retention rate across terms is 87.10%, suggesting that most enrolled students continue their studies.
+  - However, some terms exhibit slight dips in retention, which might signal issues like academic challenges or insufficient student support.
+- **Actionable Insights:**
+  - **Early Intervention:** Implement early warning systems and academic advising for students in terms with lower retention.
+  - **Enhanced Support Services:** Increase resources such as tutoring, mentoring programs, and counseling services during challenging terms.
+  - **Program Review:** Examine course structures or curriculum changes that coincide with lower retention periods to identify potential improvements.
 
 **3. Student Satisfaction Trends:**
-- **Finding:** Student satisfaction averages 82.60%. Although this indicates a generally positive experience, there are variations over time that warrant attention.
-- **Actionable Insight:** Conduct deeper surveys or focus groups in terms or years with lower satisfaction scores to pinpoint concerns. Use this feedback to improve aspects such as course delivery, support services, and campus amenities.
+- **Finding:**
+  - Student satisfaction averages at 82.60%, with variations noted over different years.
+  - Declines in satisfaction during certain periods could be linked to factors like course delivery quality, campus facilities, or student services.
+- **Actionable Insights:**
+  - **Deep-Dive Surveys:** Conduct detailed surveys or focus groups during low-satisfaction periods to identify specific areas for improvement.
+  - **Faculty Development:** Enhance professional development programs for instructors to improve teaching effectiveness.
+  - **Facility Upgrades:** Invest in campus facilities and support services to directly address areas where student feedback indicates room for improvement.
+  - **Feedback Loop:** Establish a transparent process where student feedback is regularly reviewed and acted upon, with visible outcomes communicated back to the student body.
 
 **4. Enrollment Breakdown by Department:**
-- **Finding:** The enrollment distribution shows that Arts leads with 35.5%, followed by Science (26.4%), Engineering (21%), and Business (17.2%). This significant disparity may reflect differences in program appeal or recruitment effectiveness.
-- **Actionable Insight:** Consider targeted marketing and program enhancements for departments with lower enrollment (e.g., Business) while leveraging the strong performance of the Arts department to develop interdisciplinary programs.
+- **Finding:**
+  - Enrollment by department shows disparities: Arts (35.5%), Science (26.4%), Engineering (21%), and Business (17.2%).
+  - The higher percentage in Arts might indicate strong interest or effective recruitment, while lower enrollments in Business and Engineering may suggest opportunities for growth.
+- **Actionable Insights:**
+  - **Department-Specific Marketing:** Increase marketing and outreach efforts for departments with lower enrollments, particularly Business and Engineering.
+  - **Curriculum Innovation:** Review and modernize program offerings in underperforming departments to better align with market demands.
+  - **Interdisciplinary Programs:** Consider creating interdisciplinary programs that combine strengths from higher-enrollment areas (like Arts) with those in lower-enrollment departments.
+  - **Industry Partnerships:** Develop strategic partnerships with industry to enhance the appeal and employability of graduates from Business and Engineering.
 
 **5. Seasonal Variations – Spring vs. Fall:**
-- **Finding:** The comparison between Spring and Fall terms clearly indicates that Fall enrollment is substantially higher than Spring. This seasonal pattern may be due to traditional application cycles or student preferences.
-- **Actionable Insight:** Adjust resource allocation and scheduling to manage higher demand in Fall. Additionally, develop strategies (such as early admission incentives or targeted outreach) to improve Spring term enrollment.
+- **Finding:**
+  - The Spring vs. Fall comparison clearly indicates that Fall terms have significantly higher enrollment numbers compared to Spring.
+  - This seasonal trend may reflect traditional application cycles or differences in student decision-making around the academic calendar.
+- **Actionable Insights:**
+  - **Resource Planning:** Allocate resources, faculty, and support services more heavily during Fall to manage higher enrollment.
+  - **Spring Recruitment:** Develop targeted recruitment strategies for the Spring term, such as early admission incentives or flexible scheduling options.
+  - **Flexible Start Dates:** Consider offering alternative or mini-term programs in Spring to attract a broader pool of students.
+  - **Trend Monitoring:** Regularly review seasonal data to ensure that strategic adjustments remain aligned with evolving enrollment patterns.
 
 **6. Departmental Trends Over Time:**
-- **Finding:** The grouped bar chart comparing departmental enrollment trends over time shows variations that may indicate shifting student interests or market demands.
-- **Actionable Insight:** Monitor these trends longitudinally to inform decisions on resource planning, curriculum development, and program investments. For departments experiencing a downward trend, consider revising program offerings or increasing promotional efforts.
+- **Finding:**
+  - Analysis of departmental enrollment trends over time reveals variations that may indicate shifting student interests or changing market demands.
+  - Some departments show growth while others remain static or decline, which can impact resource allocation and program planning.
+- **Actionable Insights:**
+  - **Longitudinal Analysis:** Continuously monitor and analyze departmental trends to identify long-term growth or decline patterns.
+  - **Strategic Investment:** Invest in expanding programs within departments showing robust growth, including additional faculty hires and infrastructure improvements.
+  - **Program Revitalization:** For departments with declining trends, consider curriculum updates, increased marketing efforts, or even merging programs to better meet student and industry needs.
+  - **Stakeholder Engagement:** Engage with industry stakeholders, alumni, and current students to gather insights that can help reshape and modernize department offerings.
 """)
+
 
