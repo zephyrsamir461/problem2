@@ -69,10 +69,10 @@ st.plotly_chart(fig_admissions, use_container_width=True)
 # --- Retention Rate Trends ---
 fig = px.scatter(
     df, 
-    x="Term", 
-    y="Retention_Rate", 
+    x="Year", 
+    y="Retention Rate (%)", 
     title="Retention Rate Trends Over Time",
-    labels={"Retention_Rate": "Retention Rate (%)"}
+    labels={"Retention Rate(%)": "Retention Rate (%)"}
 )
 # Connect data points with lines (this assumes the data is ordered by term)
 fig.update_traces(mode='lines+markers')
