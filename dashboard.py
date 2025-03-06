@@ -36,7 +36,7 @@ selected_term = st.sidebar.selectbox("Select Term", options=["All"] + all_terms)
 # Apply filter based on sidebar selection
 filtered_data = data.copy()
 if selected_term != "All":
-    filtered_data = filtered_data[filtered_data['term'] == selected_term]
+    filtered_data = filtered_data[filtered_data['Term'] == selected_term]
 
 # Option to preview raw data
 if st.sidebar.checkbox("Show Raw Data"):
