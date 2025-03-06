@@ -16,7 +16,6 @@ def load_data():
     # "Retention Rate (%)", "Student Satisfaction (%)", "Arts Enrolled", "Science Enrolled",
     # "Engineering Enrolled", "Business Enrolled"
     df['Season'] = df['Term'].apply(lambda x: 'Spring' if 'Spring' in x else ('Fall' if 'Fall' in x else 'Other'))
-    df['Year'] = df['Term'].str.extract(r'(\d{4})')
     return df
 
 df = load_data()
