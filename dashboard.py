@@ -82,7 +82,7 @@ st.plotly_chart(fig, use_container_width=True)
 # --- Student Satisfaction Trends ---
 st.subheader("Student Satisfaction Trends")
 fig_satisfaction = px.line(df, x="Year", y="Student Satisfaction (%)", markers=True,
-                           title="Average Student Satisfaction over the years")
+                           title="Student Satisfaction over the years")
 fig_satisfaction.update_layout(xaxis_tickangle=-45)
 st.plotly_chart(fig_satisfaction, use_container_width=True)
 
