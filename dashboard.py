@@ -68,17 +68,15 @@ st.plotly_chart(fig_admissions, use_container_width=True)
 
 # --- Retention Rate Trends ---
 st.subheader("Retention Rate Trends")
-retention_data = filtered_df.groupby("Term")["Retention Rate (%)"].mean().reset_index()
-fig_retention = px.line(retention_data, x="Term", y="Retention Rate (%)", markers=True,
-                        title="Average Retention Rate per Term")
+fig_retention = px.line(df, x="Year", y="Retention Rate (%)", markers=True,
+                        title="Retention Rate over the years")
 fig_retention.update_layout(xaxis_tickangle=-45, yaxis_title="Retention Rate (%)")
 st.plotly_chart(fig_retention, use_container_width=True)
 
 # --- Student Satisfaction Trends ---
 st.subheader("Student Satisfaction Trends")
-satisfaction_data = filtered_df.groupby("Term")["Student Satisfaction (%)"].mean().reset_index()
-fig_satisfaction = px.line(satisfaction_data, x="Term", y="Student Satisfaction (%)", markers=True,
-                           title="Average Student Satisfaction Score per Term")
+fig_satisfaction = px.line(df, x="Year", y="Student Satisfaction (%)", markers=True,
+                           title="Average Student Satisfaction over the years")
 fig_satisfaction.update_layout(xaxis_tickangle=-45)
 st.plotly_chart(fig_satisfaction, use_container_width=True)
 
