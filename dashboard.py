@@ -72,6 +72,7 @@ with st.expander("Click here to view Key Findings & Actionable Insights for Admi
     - **Finding:**
       - The dashboard indicates a total of **59,400 applications**, **35,100 admissions**, and **13,980 enrollments**.
       - This corresponds to a conversion rate of approximately **59%** from applications to admissions, but only around **40%** of admitted students actually enroll.
+      - The number of applications, admissions and enrollments each term per year is same according to the bar chart.  
     
     - **Actionable Insights:**
       - **Enhanced Follow-Up:** Deploy personalized communication strategies—such as targeted emails, campus visits, or webinars—to encourage admitted students to convert to enrolled.
@@ -97,11 +98,11 @@ with st.expander("Click here to view Key Findings & Actionable Insights for Rete
     **Retention Rate Trends:**
     
     - **Finding:**
-      - The average retention rate across terms is approximately **87.10%**, indicating a generally healthy performance.
-      - However, there are noticeable fluctuations in retention rates across different terms, with some periods experiencing dips that may signal challenges in student engagement or academic support.
-    
+      - Retention rates have risen from around 85% in 2016 to approximately 90% by 2024, indicating steady progress over the observed period.
+      - However, there are noticeable fluctuations in retention rates across different terms, with some periods experiencing dips around 2019–2020 (falling back near 85%) that may signal challenges in student engagement or academic support.
+      - The retention rate climbs sharply from 2021 onward, suggesting that recent measures (e.g., improved student support or revised academic policies) have effectively helped more students persist in their studies.
     - **Actionable Insights:**
-      - **Early Intervention Programs:** Introduce early warning systems and proactive academic advising during terms with lower retention to identify and support at-risk students.
+      - **Investigate Past Challenges:** Examine the conditions or policy changes around 2019–2020 to understand what caused the temporary drop in retention. Insights here can help prevent similar declines in the future.Introduce early warning systems and proactive academic advising during terms with lower retention to identify and support at-risk students.
       - **Enhanced Support Services:** Boost tutoring, mentoring, and counseling services during challenging periods to help improve student retention.
       - **Curriculum Review:** Analyze terms with significant retention dips to determine if curriculum changes or course delivery methods might be contributing factors, and consider appropriate adjustments.
     """)
@@ -117,13 +118,13 @@ with st.expander("Click here to view Key Findings & Actionable Insights for Stud
     **Student Satisfaction Trends:**
     
     - **Finding:**
-      - The average student satisfaction score is approximately **82.60%**, suggesting that students generally have a positive experience.
-      - However, there are fluctuations in satisfaction over the years, indicating that certain terms may have faced challenges in areas such as course delivery, support services, or campus facilities.
-    
+      - Student satisfaction rose from around 78% in the mid-2010s to about 88% by 2024, reflecting a notable improvement in the overall student experience.  
+      - The chart shows a steady upward trend with minor fluctuations—there’s a small dip around 2020, suggesting that specific events (e.g., changes in campus operations, global factors) may have temporarily impacted satisfaction levels.
+      - From 2021 onward, the satisfaction rate climbs more sharply, indicating that recent initiatives (academic improvements, campus upgrades, or support services) have positively influenced student sentiment.
     - **Actionable Insights:**
-      - **Deep-Dive Feedback:** Conduct detailed surveys or focus groups during periods of lower satisfaction to pinpoint specific areas that need improvement.
-      - **Enhance Support Services:** Consider bolstering student support services and campus facilities to address concerns raised in feedback.
-      - **Continuous Improvement:** Establish a transparent feedback loop where student input is regularly reviewed and leads to visible changes, thereby boosting overall satisfaction.
+      - **Investigate Factors Behind the Dip:** Analyze the context around the 2020 dip to determine any disruptions—such as pandemic-related transitions, shifts in course delivery, or campus closures—and develop strategies to mitigate similar impacts in the future. 
+      - **Enhance Support Services:** Consider bolstering student support services and campus facilities to address concerns raised in feedback.Identify the most successful interventions implemented after 2021—such as expanded mental health support, improved online learning resources, or enhanced student engagement activities—and maintain or scale them.
+      - **Continuous Improvement:** Establish a transparent feedback loop where student input is regularly reviewed and leads to visible changes, thereby boosting overall satisfaction.Demonstrating a strong trajectory of improvement can help attract prospective students.
     """)
 
 # --- Enrollment Breakdown by Department ---
@@ -146,12 +147,12 @@ with st.expander("Click here to view Key Findings & Actionable Insights for Enro
     **Enrollment Breakdown by Department:**
     
     - **Finding:**
-      - The pie chart shows that the **Arts** department leads with approximately **35.5%** of total enrollments.
-      - **Science** follows with around **26.4%**, **Engineering** with **21%**, and **Business** with **17.2%**.
+      - The pie chart shows that the **Engineering** department leads with approximately **35.5%** of total enrollments.
+      - **Business** follows with around **26.4%**, **Arts** with **21%**, and **Science** with **17.2%**.
       - This disparity indicates that certain departments are significantly more attractive or better marketed compared to others.
     
     - **Actionable Insights:**
-      - **Targeted Recruitment:** Increase outreach and tailored marketing efforts for departments with lower enrollment (e.g., Business) to boost their appeal.
+      - **Targeted Recruitment:** Increase outreach and tailored marketing efforts for departments with lower enrollment (e.g., Science) to boost their appeal.
       - **Program Enhancement:** Review and potentially update the curriculum or program offerings in under-enrolled departments to align more closely with student interests and industry demands.
       - **Resource Allocation:** Consider adjusting resource distribution, such as faculty and facilities, to support growth in departments that are lagging behind.
       - **Stakeholder Engagement:** Engage with current students, alumni, and industry partners to gain insights into what makes certain departments more popular and use this information to improve the offerings in less popular areas.
@@ -193,18 +194,17 @@ with st.expander("Click here to view Key Findings & Actionable Insights for Seas
     **Seasonal Variations – Spring vs. Fall:**
     
     - **Finding:**
-      - The data shows that **Fall terms consistently have higher enrollment numbers** compared to Spring.
-      - This seasonal difference may be due to traditional application cycles, student preferences, or differences in program offerings between the two terms.
-    
+      - The data shows that both **Fall and **Spring terms consistently have the same enrollment numbers**.
+      
     - **Actionable Insights:**
-      - **Resource Allocation:** Allocate more resources, such as faculty and support services, during Fall terms to manage the higher demand.
-      - **Spring Recruitment Strategies:** Develop targeted marketing and recruitment initiatives for Spring terms, such as early admission incentives, flexible course schedules, or tailored program offerings.
+      - **Resource Allocation:** Allocate more resources, such as faculty and support services, during both terms to manage the higher demand.
+      - **Spring Recruitment Strategies:** Develop targeted marketing and recruitment initiatives for both terms, such as early admission incentives, flexible course schedules, or tailored program offerings.
       - **Trend Monitoring:** Continuously monitor seasonal enrollment trends to quickly adapt strategies and address any emerging discrepancies.
-      - **Program Diversification:** Consider expanding or diversifying programs during the Spring term to increase its appeal and boost enrollment numbers.
+      - **Program Diversification:** Consider expanding or diversifying programs during both terms to increase its appeal and boost enrollment numbers.
     """)
 
 # --- Compare Trends Between Departments ---
-st.subheader("Departmental Enrollment Trends Over Time")
+st.subheader("Departmental Enrollment Trends Over Terms")
 
 # Define the enrollment columns for each department
 dept_columns = ["Arts Enrolled", "Science Enrolled", "Engineering Enrolled", "Business Enrolled"]
@@ -224,18 +224,18 @@ fig_dept_trends = px.bar(
     y="Enrollments",
     color="Department",
     barmode="group",
-    title="Departmental Enrollment Trends Over Time"
+    title="Departmental Enrollment Trends Over Terms"
 )
 fig_dept_trends.update_layout(xaxis_tickangle=-45)
 
 st.plotly_chart(fig_dept_trends, use_container_width=True)
-with st.expander("Click here to view Key Findings & Actionable Insights for Departmental Trends Over Time"):
+with st.expander("Click here to view Key Findings & Actionable Insights for Departmental Trends Over Terms"):
     st.markdown("""
     **Departmental Trends Over Time:**
     
     - **Finding:**
-      - The grouped bar chart reveals that enrollment trends vary across different departments over multiple terms.
-      - Some departments, such as Arts and Science, display consistent or growing trends, while others like Engineering and Business may show stagnation or declines in specific terms.
+      - Enrollment patterns remain consistent between Spring and Fall, meaning students are not showing a strong preference for one term over the other in terms of department choices.
+      - Some departments, such as Engineering and Business, display consistent or growing trends, while others like Arts and Science may show stagnation or declines in specific terms.
       - These variations suggest shifting student interests and possibly different levels of resource allocation or program appeal.
     
     - **Actionable Insights:**
