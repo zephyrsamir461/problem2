@@ -133,3 +133,31 @@ if not spring_data.empty or not fall_data.empty:
     st.plotly_chart(fig_spring_fall, use_container_width=True)
 else:
     st.write("Insufficient data for Spring vs Fall comparison.")
+
+# --- Compare Trends Between Departments ---
+st.subheader("Departmental Enrollment Trends Over Time")
+
+# Define the enrollment columns for each department
+dept_columns = ["Arts Enrolled", "Science Enrolled", "Engineering Enrolled", "Business Enrolled"]
+
+# Convert the wide-format departmental columns into a long-format DataFrame
+df_dept_long = filtered_df.melt(
+    id_vars=["Term", "Year"],
+    value_vars=dept_columns,
+    var_name="Department",
+    value_name="Enrollments"
+)
+
+# Create a line chart comparing trends between departments
+fig_dept_trends = px.line(
+    df_dept_long,
+    x="Term",
+    y="Enrollments",
+    color="Department",
+    markers=True,
+    title="Departmental Enrollment Trends Over Time"
+)
+fig_dept_trends.update_layout(xaxis_tickangle=-45)
+
+st.plotly_chart(fig_dept_trends, use_container_width=True)
+
