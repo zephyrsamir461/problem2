@@ -65,4 +65,5 @@ col1.metric("Applications", int(latest_data['Applications']))
 col2.metric("Admitted", int(latest_data['Admitted']))
 col3.metric("Enrolled", int(latest_data['Enrolled']))
 col4.metric("Avg. Retention Rate", f"{latest_data['Retention Rate (%)']:.2f}")
-col5.metric("Avg. Satisfaction Rate", f"{latest_data['Student Satisfaction (%)']:.2f}")
+col5.metric("Avg. Satisfaction", f"{latest_data['Student Satisfaction (%)']:.2f}")
+
