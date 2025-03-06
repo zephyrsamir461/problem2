@@ -64,16 +64,20 @@ fig_admissions = px.bar(admissions_data, x="Term", y=["Applications", "Admitted"
                         barmode="group", title="Applications, Admissions, and Enrollments per Term")
 fig_admissions.update_layout(xaxis_tickangle=-45)
 st.plotly_chart(fig_admissions, use_container_width=True)
-with st.expander("Click here to view Key Findings & Actionable Insights"):
-st.markdown("""
-** Admissions Funnel Efficiency:**
-- **Finding:**
-  - The dashboard shows a total of 59,400 applications, with 35,100 students admitted and 13,980 ultimately enrolled.
-  - This indicates a conversion rate from application to admission of about 59%, but the yield from admitted to enrolled is only around 40%.
-- **Actionable Insights:**
-  - **Targeted Follow-Ups:** Enhance personalized communication with admitted students through phone calls, emails, or campus visits.
-  - **Financial Incentives:** Reassess scholarship and financial aid offerings to boost enrollment among admitted students.
-  - **Data Analysis:** Investigate demographic and geographic trends to identify segments with lower conversion rates and tailor recruitment strategies accordingly.""")
+# --- Interactive Key Findings & Actionable Insights ---
+with st.expander("Click here to view Key Findings & Actionable Insights for Admissions Funnel Efficiency"):
+    st.markdown("""
+    **Admissions Funnel Efficiency:**
+    
+    - **Finding:**
+      - The dashboard indicates a total of **59,400 applications**, **35,100 admissions**, and **13,980 enrollments**.
+      - This corresponds to a conversion rate of approximately **59%** from applications to admissions, but only around **40%** of admitted students actually enroll.
+    
+    - **Actionable Insights:**
+      - **Enhanced Follow-Up:** Deploy personalized communication strategies—such as targeted emails, campus visits, or webinars—to encourage admitted students to convert to enrolled.
+      - **Financial Incentives:** Reevaluate and potentially expand scholarship and financial aid offerings to improve the enrollment yield.
+      - **Targeted Recruitment:** Analyze demographic and geographic data to identify segments with lower conversion rates, then tailor recruitment strategies to address those gaps.
+    """)
 
 # --- Retention Rate Trends ---
 st.subheader("Retention Rate Trends")
