@@ -67,12 +67,18 @@ fig_admissions.update_layout(xaxis_tickangle=-45)
 st.plotly_chart(fig_admissions, use_container_width=True)
 
 # --- Retention Rate Trends ---
-st.subheader("Retention Rate Trends")
-fig_retention = px.line(df, x="Year", y="Retention Rate (%)", markers=True,
-                        title="Retention Rate over the years")
-fig_retention.update_layout(xaxis_tickangle=-45, yaxis_title="Retention Rate (%)")
-st.plotly_chart(fig_retention, use_container_width=True)
+fig = px.scatter(
+    df, 
+    x="Term", 
+    y="Retention_Rate", 
+    title="Retention Rate Trends Over Time",
+    labels={"Retention_Rate": "Retention Rate (%)"}
+)
+# Connect data points with lines (this assumes the data is ordered by term)
+fig.update_traces(mode='lines+markers')
+fig.update_layout(xaxis_tickangle=-45)
 
+st.plotly_chart(fig, use_container_width=True)
 # --- Student Satisfaction Trends ---
 st.subheader("Student Satisfaction Trends")
 fig_satisfaction = px.line(df, x="Year", y="Student Satisfaction (%)", markers=True,
