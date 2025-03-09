@@ -245,4 +245,54 @@ with st.expander("Click here to view Key Findings & Actionable Insights for Depa
       - **Stakeholder Engagement:** Collaborate with faculty, students, and industry experts to identify and address factors influencing these trends, ensuring that program offerings remain relevant and competitive.
     """)
 
+# --- Compare Departmental Enrollment Trends Over Multiple Years ---
+st.subheader("Departmental Enrollment Trends Over Multiple Years")
 
+# Convert department enrollment data into long format for trend analysis
+df_dept_trends = df.melt(
+    id_vars=["Year"],
+    value_vars=["Arts Enrolled", "Science Enrolled", "Engineering Enrolled", "Business Enrolled"],
+    var_name="Department",
+    value_name="Enrollments"
+)
+
+# Create a line chart showing department enrollment trends over years
+fig_dept_trend_years = px.line(
+    df_dept_trends,
+    x="Year",
+    y="Enrollments",
+    color="Department",
+    markers=True,
+    title="Departmental Enrollment Trends Over Years"
+)
+fig_dept_trend_years.update_layout(xaxis_tickangle=-45)
+st.plotly_chart(fig_dept_trend_years, use_container_width=True)
+
+# --- Compare Retention Rates & Student Satisfaction Over Time ---
+st.subheader("Retention Rate vs. Student Satisfaction Over Time")
+
+# Create a dual-axis line chart for retention rates and satisfaction levels
+fig_trends = go.Figure()
+
+# Retention Rate Line
+fig_trends.add_trace(go.Scatter(
+    x=df["Year"], y=df["Retention Rate (%)"], mode="lines+markers",
+    name="Retention Rate (%)", yaxis="y1"
+))
+
+# Student Satisfaction Line
+fig_trends.add_trace(go.Scatter(
+    x=df["Year"], y=df["Student Satisfaction (%)"], mode="lines+markers",
+    name="Student Satisfaction (%)", yaxis="y2"
+))
+
+# Configure dual-axis layout
+fig_trends.update_layout(
+    title="Retention Rate and Student Satisfaction Over Time",
+    xaxis=dict(title="Year"),
+    yaxis=dict(title="Retention Rate (%)", side="left"),
+    yaxis2=dict(title="Student Satisfaction (%)", side="right", overlaying="y", showgrid=False),
+    legend=dict(x=0.05, y=1)
+)
+
+st.plotly_chart(fig_trends, use_container_width=True)
