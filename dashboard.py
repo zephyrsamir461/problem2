@@ -271,8 +271,8 @@ st.plotly_chart(fig_dept_trend_years, use_container_width=True)
 # --- Interactive Key Findings & Actionable Insights ---
 with st.expander("Click here to view Key Findings & Actionable Insights on Student Trends Over Years"):
     st.markdown("""
-    **Trends in Departmental Enrollment Over the Years:**
-    
+**Trends in Departmental Enrollment Over the Years:**
+
  - **Finding:**
 -Engineering Enrollment Shows Consistent Growth: Engineering has experienced steady growth, rising from just above 200 enrollments in 2015 to nearly 300 by 2024.This suggests strong demand and sustained student interest in the field.
 -Business Enrollment is Growing but at a Slower Rate: Business enrollment has been increasing but at a slower pace compared to Engineering.While it started near 150 enrollments in 2015, the growth trajectory suggests moderate but stable interest.
@@ -283,4 +283,4 @@ with st.expander("Click here to view Key Findings & Actionable Insights on Stude
 - Expand Engineering Programs to Sustain Growth: Given consistent demand, consider increasing faculty, lab resources, and industry partnerships to support future growth. Develop specialized tracks (e.g., AI, Robotics, Renewable Energy) to attract an even broader student base.
 - Enhance Business Offerings to Strengthen Growth: While growing slowly, Business could benefit from more specialized programs such as Finance, Entrepreneurship, or Tech-Driven Business. Strengthen industry collaboration by offering internship-based programs and networking events.
 - Support Science Programs to Reverse the Decline: Investigate why enrollments are decreasing—this could be due to limited job prospects, outdated course structures, or competitive programs elsewhere. Consider modernizing the curriculum, introducing interdisciplinary programs (e.g., Data Science, Environmental Science), and enhancing lab/research opportunities.
-- Continue Arts Program Promotion & Diversification: Arts enrollment is increasing but remains below Engineering and Business.Consider launching cross-disciplinary programs that integrate Arts with Business or Technology (e.g., Digital Media, UX/UI Design, or Film & Entrepreneurship).Strengthen career-focused initiatives (e.g., internships, industry projects) to showcase real-world applications of an Arts degree.
+- Continue Arts Program Promotion & Diversification: Arts enrollment is increasing but remains below Engineering and Business.Consider launching cross-disciplinary programs that integrate Arts with Business or Technology (e.g., Digital Media, UX/UI Design, or Film & Entrepreneurship).Strengthen career-focused initiatives (e.g., internships, industry projects) to showcase real-world applications of an Arts degree.""")
