@@ -50,7 +50,7 @@ st.markdown(f"**Total Applications:** {total_applications:,}")
 st.markdown(f"**Total Admitted:** {total_admissions:,}")
 st.markdown(f"**Total Enrolled:** {total_enrollments:,}")
 st.markdown(f"**Average Retention Rate (%):** {avg_retention:.2f}%")
-st.markdown(f"**Average Student Satisfaction (%):** {avg_satisfaction:.2f}")
+st.markdown(f"**Average Student Satisfaction (%):** {avg_satisfaction:.2f}%")
 
 # --- Admissions Overview Panel ---
 st.subheader("Admissions Overview")
@@ -273,7 +273,7 @@ with st.expander("Click here to view Key Findings & Actionable Insights on Stude
     st.markdown("""
 **Trends in Departmental Enrollment Over the Years:**
 
- - **Finding:**
+- **Finding:**
 -**Engineering Enrollment Shows Consistent Growth:** Engineering has experienced steady growth, rising from just above 200 enrollments in 2015 to nearly 300 by 2024.This suggests strong demand and sustained student interest in the field.
 -**Business Enrollment is Growing but at a Slower Rate:** Business enrollment has been increasing but at a slower pace compared to Engineering.While it started near 150 enrollments in 2015, the growth trajectory suggests moderate but stable interest.
 -**Arts Enrollment is Gradually Increasing:** The Arts department has shown steady but slower growth. The increase is noticeable, though it remains behind Engineering and Business in overall numbers.
