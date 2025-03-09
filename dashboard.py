@@ -280,4 +280,4 @@ with st.expander("Click here to view Key Findings & Actionable Insights on Stude
     - **Actionable Insights:**
       - **Monitor Industry Trends:** Align programs with market demand to ensure continued interest in all departments.
       - **Improve Underperforming Departments:** If Science or Arts show stagnation, introduce **new courses, specializations, or interdisciplinary programs** to boost enrollment.
-      - **Increase Funding for High-Growth Areas:** Ensure **Engineering and Business** receive adequate funding to sustain growth.
+      - **Increase Funding for High-Growth Areas:** Ensure **Engineering and Business** receive adequate funding to sustain growth.""")
