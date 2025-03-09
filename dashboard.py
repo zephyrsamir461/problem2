@@ -274,10 +274,14 @@ with st.expander("Click here to view Key Findings & Actionable Insights on Stude
 **Trends in Departmental Enrollment Over the Years:**
 
 - **Finding:**
--**Engineering Enrollment Shows Consistent Growth:** Engineering has experienced steady growth, rising from just above 200 enrollments in 2015 to nearly 300 by 2024.This suggests strong demand and sustained student interest in the field.
--**Business Enrollment is Growing but at a Slower Rate:** Business enrollment has been increasing but at a slower pace compared to Engineering.While it started near 150 enrollments in 2015, the growth trajectory suggests moderate but stable interest.
--**Arts Enrollment is Gradually Increasing:** The Arts department has shown steady but slower growth. The increase is noticeable, though it remains behind Engineering and Business in overall numbers.
--**Science Enrollment is Declining:** Unlike other departments, Science enrollments initially remained stable but started to decline from 2019 onward.By 2024, Science enrollment is at its lowest in the observed period, suggesting a potential drop in interest or external factors affecting student decisions.
+-**Engineering Enrollment Shows Consistent Growth:** 
+Engineering has experienced steady growth, rising from just above 200 enrollments in 2015 to nearly 300 by 2024.This suggests strong demand and sustained student interest in the field.
+-**Business Enrollment is Growing but at a Slower Rate:** 
+Business enrollment has been increasing but at a slower pace compared to Engineering.While it started near 150 enrollments in 2015, the growth trajectory suggests moderate but stable interest.
+-**Arts Enrollment is Gradually Increasing:** 
+The Arts department has shown steady but slower growth. The increase is noticeable, though it remains behind Engineering and Business in overall numbers.
+-**Science Enrollment is Declining:**
+Unlike other departments, Science enrollments initially remained stable but started to decline from 2019 onward.By 2024, Science enrollment is at its lowest in the observed period, suggesting a potential drop in interest or external factors affecting student decisions.
 
 - **Actionable Insights:**
 - **Expand Engineering Programs to Sustain Growth:** Given consistent demand, consider increasing faculty, lab resources, and industry partnerships to support future growth. Develop specialized tracks (e.g., AI, Robotics, Renewable Energy) to attract an even broader student base.
