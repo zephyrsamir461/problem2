@@ -198,7 +198,7 @@ with st.expander("Click here to view Key Findings & Actionable Insights for Seas
       
     - **Actionable Insights:**
       - **Resource Allocation:** Allocate more resources, such as faculty and support services, during both terms to manage the higher demand.
-      - **Spring Recruitment Strategies:** Develop targeted marketing and recruitment initiatives for both terms, such as early admission incentives, flexible course schedules, or tailored program offerings.
+      - **Term Recruitment Strategies:** Develop targeted marketing and recruitment initiatives for both terms, such as early admission incentives, flexible course schedules, or tailored program offerings.
       - **Trend Monitoring:** Continuously monitor seasonal enrollment trends to quickly adapt strategies and address any emerging discrepancies.
       - **Program Diversification:** Consider expanding or diversifying programs during both terms to increase its appeal and boost enrollment numbers.
     """)
