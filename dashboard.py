@@ -268,31 +268,16 @@ fig_dept_trend_years = px.line(
 fig_dept_trend_years.update_layout(xaxis_tickangle=-45)
 st.plotly_chart(fig_dept_trend_years, use_container_width=True)
 
-# --- Compare Retention Rates & Student Satisfaction Over Time ---
-st.subheader("Retention Rate vs. Student Satisfaction Over Time")
+# --- Interactive Key Findings & Actionable Insights ---
+with st.expander("Click here to view Key Findings & Actionable Insights on Student Trends Over Years"):
+    st.markdown("""
+    **Trends in Departmental Enrollment Over the Years:**
+    
+    - **Finding:**
+      - Enrollment trends show **consistent growth in Engineering and Business**, while **Arts and Science have remained stable or fluctuated over time**.
+      - Some departments might see **temporary enrollment drops**, indicating external factors like curriculum changes or industry demand shifts.
 
-# Create a dual-axis line chart for retention rates and satisfaction levels
-fig_trends = go.Figure()
-
-# Retention Rate Line
-fig_trends.add_trace(go.Scatter(
-    x=df["Year"], y=df["Retention Rate (%)"], mode="lines+markers",
-    name="Retention Rate (%)", yaxis="y1"
-))
-
-# Student Satisfaction Line
-fig_trends.add_trace(go.Scatter(
-    x=df["Year"], y=df["Student Satisfaction (%)"], mode="lines+markers",
-    name="Student Satisfaction (%)", yaxis="y2"
-))
-
-# Configure dual-axis layout
-fig_trends.update_layout(
-    title="Retention Rate and Student Satisfaction Over Time",
-    xaxis=dict(title="Year"),
-    yaxis=dict(title="Retention Rate (%)", side="left"),
-    yaxis2=dict(title="Student Satisfaction (%)", side="right", overlaying="y", showgrid=False),
-    legend=dict(x=0.05, y=1)
-)
-
-st.plotly_chart(fig_trends, use_container_width=True)
+    - **Actionable Insights:**
+      - **Monitor Industry Trends:** Align programs with market demand to ensure continued interest in all departments.
+      - **Improve Underperforming Departments:** If Science or Arts show stagnation, introduce **new courses, specializations, or interdisciplinary programs** to boost enrollment.
+      - **Increase Funding for High-Growth Areas:** Ensure **Engineering and Business** receive adequate funding to sustain growth.
